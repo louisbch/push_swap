@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:25:26 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/11/08 16:06:58 by lbouchon         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:17:05 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 void	ft_add_cell(t_data **cell, int val)
 {
 	t_data	*tmp;
-	t_data	*new;
+	t_data	*add;
 
-	tmp = malloc(sizeof(t_data));
-	
+	add = malloc(sizeof(t_data));
 	while (tmp)
 	{
-		
+		add =lst_new(value);
 	}
 	return (tmp);
 }
@@ -32,10 +31,10 @@ void	lst_new(int val)
 	
 	tmp = malloc(sizeof(t_data));
 	if (!tmp)
-		return ;
+		return (NULL);
 	tmp->next = NULL;
 	tmp->value = val;
-	return (tmp)
+	return (tmp);
 }
 
 void	ft_print_list(t_data *cell)
