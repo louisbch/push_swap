@@ -6,34 +6,45 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:25:26 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/11/08 16:17:05 by lbouchon         ###   ########.fr       */
+/*   Updated: 2022/11/22 16:45:54 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_add_cell(t_data **cell, int val)
+t_data	*ft_add_cell(t_data *cell, int val)
 {
 	t_data	*tmp;
-	t_data	*add;
+	t_data	*new;
 
-	add = malloc(sizeof(t_data));
-	while (tmp)
+	tmp = cell;
+	if (!tmp)
+		tmp = lst_new(val);
+	else
 	{
-		add =lst_new(value);
+		while (tmp->next)
+			tmp = tmp->next;
+		new = malloc(sizeof(t_data));
+		if (new)
+		{
+			new->value = val;
+			new->next = NULL;
+			tmp->next = new;
+		}
+		tmp = cell;
 	}
 	return (tmp);
 }
 
-void	lst_new(int val)
+t_data	*lst_new(int val)
 {
-	t_data *tmp;
-	
+	t_data	*tmp;
+
 	tmp = malloc(sizeof(t_data));
 	if (!tmp)
 		return (NULL);
-	tmp->next = NULL;
 	tmp->value = val;
+	tmp->next = NULL;
 	return (tmp);
 }
 

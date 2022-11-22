@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 11:17:27 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/11/22 16:48:40 by lbouchon         ###   ########.fr       */
+/*   Created: 2022/11/10 10:55:04 by lbouchon          #+#    #+#             */
+/*   Updated: 2022/11/22 16:51:11 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	main(int ac, char **av)
+void	swap(t_data **stack, char *str)
 {
-	t_data	*stack_a;
-	t_data	*stack_b;
-	char	**tab;
+	t_data	*first;
+	t_data	*second;
+	t_data	*third;
 
-	stack_a = NULL;
-	if (ac > 2)
+	if (stack && *stack && (*stack)->next)
 	{
-		tab = ft_more_args(ac, av, &stack_a);
-		check_doubles(stack_a);
-		reverse_rotate(&stack_a);
-		ft_print_list(stack_a);
+		first = *stack;
+		second = first->next;
+		*stack = second;
+		if (second->next)
+			third = second->next;
+		else
+			third = NULL;
+		first->next = third;
+		second->next = first;
+		ft_putstr_fd(str, 1);
 	}
-	else if (ac == 2)
-	{
-		ft_two_args(ac, av, &stack_a);
-		check_doubles(stack_a);
-		ft_print_list(stack_a);
-	}
-	return (0);
+}
+
+void	ss(t_data **stack_a, t_data **stack_b)
+{
+	swap(stack_a, "sa\n");
+	swap(stack_b, "sb\n");
+	ft_putstr_fd("ss\n", 1);
 }

@@ -6,56 +6,11 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:34:07 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/11/08 11:41:30 by lbouchon         ###   ########.fr       */
+/*   Updated: 2022/11/22 16:48:00 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-int	ft_isdigit(char *str)
-{
-	int	i;
-	int	j;
-	
-	i = 0;
-	j = 0;
-	while (str[i])
-	{
-		if (str[i] >= 48 && str[i] <= 57)
-			j++;
-		else if (str[i] < 48 && str[i] > 57)
-			return (0);
-		i++;
-	}
-	return (j);
-}
-
-int	check_arg(const char *str)
-{
-	size_t		i;
-	long int	res;
-	int			sign;
-
-	i = 0;
-	res = 0;
-	sign = 1;
-	if (str[i] == '-' || str[i] == '+')
-	{	
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = res * 10 + str[i] - '0';
-		if (res * sign > INT_MAX)
-			return (-1);
-		if (res * sign < INT_MIN)
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 int	ft_atoi(char *str)
 {
@@ -83,6 +38,8 @@ int	ft_atoi(char *str)
 			return (0);
 		i++;
 	}
+	if (str[i] || (sign == -1 && i == 1) || i == 0)
+		exit_error();
 	return (res * sign);
 }
 
@@ -113,4 +70,17 @@ size_t	ft_strlen(const char *str)
 		i++;
 	}
 	return (i);
+}
+
+void	ft_putstr_fd(const char *s, int fd)
+{
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
+}
+
+void	exit_error(void)
+{
+	ft_putstr_fd("Error\n", 1);
+	exit(EXIT_FAILURE);
 }

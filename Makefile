@@ -6,7 +6,7 @@
 #    By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 10:29:31 by lbouchon          #+#    #+#              #
-#    Updated: 2022/11/08 15:10:43 by lbouchon         ###   ########.fr        #
+#    Updated: 2022/11/22 16:31:29 by lbouchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,11 @@ SRCS = $(DIR)check_args.c		\
 		$(DIR)ft_split.c		\
 		$(DIR)ft_utils.c		\
 		$(DIR)main.c			\
-		$(DIR)move.c			\
-		$(DIR)ft_utils2.c		\
 		$(DIR)cell.c			\
+		$(DIR)push.c			\
+		$(DIR)swap.c			\
+		$(DIR)rotate.c			\
+		$(DIR)reverse.c			\
 
 OBJS = ${SRCS:.c=.o}
 
